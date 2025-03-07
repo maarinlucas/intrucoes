@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adicionar animações aos cards
     addCardAnimations();
     
-    // Adicionar ano atual no footer
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
+   
 });
 
 // Função para preencher campos de data
