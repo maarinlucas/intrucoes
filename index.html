@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jejum dos Representantes do Reino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="imageContainer">
+            <img src="logo.png" alt="Logo">
+        </div>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav id="mainNav">
+            <a class="atual" href="index.html">Jejum</a>
+            <a href="#instrucoes">Devocional</a>
+            <a href="#participacao">Oração</a>
+            <a href="#faq">Cronograma</a>
+        </nav>
+        
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <main class="container">
+        <section class="card periodo-card">
+            <div class="card-header">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>Período</h2>
+            </div>
+            <div class="card-body">
+                <div class="date-badge">
+                    <span id="dataInicio"></span> a <span id="dataFim"></span>
+                </div>
+                <p class="dias-semana">(<span id="diaSemanaInicio"></span> a <span id="diaSemanFim"></span>)</p>
+            </div>
+        </section>
+
+        <section class="card instrucoes-card">
+            <div class="card-header">
+                <i class="fas fa-list-ul"></i>
+                <h2>Instruções</h2>
+            </div>
+            <div class="card-body">
+                <div class="faixa-etaria">
+                    <div class="faixa-etaria-header">
+                        <i class="fas fa-child"></i>
+                        <h3><strong>Menor de 18 anos:</strong></h3>
+                    </div>
+                    <ul>
+                        <li><span id="horasJovens1"></span> horas sem qualquer refeição nos dias <span
+                                id="dataInicio2"></span> e <span id="dataIntermediaria"></span>.</li>
+                        <li><span id="horasJovens2"></span> horas no último dia <span id="dataFim2"></span></li>
+                    </ul>
+                </div>
+
+                <div class="faixa-etaria">
+                    <div class="faixa-etaria-header">
+                        <i class="fas fa-user"></i>
+                        <h3><strong>Maior de 18 anos:</strong></h3>
+                    </div>
+                    <ul>
+                        <li><span id="horasAdultos1"></span> horas sem qualquer refeição nos dias <span
+                                id="dataInicio3"></span> e <span id="dataIntermediaria2"></span>.</li>
+                        <li><span id="horasAdultos2"></span> horas no último dia <span id="dataFim3"></span></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <p>Estas horas não são os horários específicos para ficarmos de jejum, mas a
+                        <strong>quantidade</strong> de horas em qualquer período do dia.</p>
+                </div>
+
+                <div class="regras">
+                    <h3><i class="fas fa-exclamation-circle"></i> Regras importantes:</h3>
+                    <ul>
+                        <li><i class="fas fa-times"></i> <strong>Sem açucar</strong> durante todos os dias do jejum</li>
+                        <li><i class="fas fa-tint"></i> Pode beber água durante as horas do jejum (sem exageros).</li>
+                        <li><i class="fas fa-pills"></i> Pequenas refeições somente em caso de <strong>prescrição
+                                médica</strong> devido problemas de saúde.</li>
+                        <li><i class="fas fa-bed"></i> Não dormir durante o jejum.</li>
+                        <li><i class="fas fa-clock"></i> Desta vez sem tempo mínimo ou máximo de oração</li>
+                        <li><i class="fas fa-undo"></i> Se por acaso quebrar acidentalmente o jejum, pedir perdão a Deus
+                            e voltar ao jejum nas horas em que parou, adicionando 10m a 30m dependendo da quantidade que
+                            ingeriu.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <button id="showPrayer" class="button">
+            <span id="buttonText">Ver Tópicos de Oração</span>
+            <i id="buttonIcon" class="fas fa-chevron-down"></i>
+        </button>
+
+        <section id="prayerTopics" class="card prayer-topics">
+            <div class="card-header">
+                <i class="fas fa-praying-hands"></i>
+                <h2>Tópicos de oração</h2>
+            </div>
+            <div class="card-body">
+                <div class="prayer-grid">
+                    <div class="prayer-item">
+                        <i class="fas fa-home"></i>
+                        <span>Sua família</span>
+                    </div>
+                    <div class="prayer-item">
+                        <i class="fas fa-unlock"></i>
+                        <span>Libertação de pecados</span>
+                    </div>
+                    <div class="prayer-item">
+                        <i class="fas fa-book"></i>
+                        <span>Constância devocional</span>
+                    </div>
+                    <div class="prayer-item">
+                        <i class="fas fa-brain"></i>
+                        <span>Sabedoria para tomar decisões</span>
+                    </div>
+                    <div class="prayer-item">
+                        <i class="fas fa-users"></i>
+                        <span>Por aqueles que você conhece que não aceitaram Jesus</span>
+                    </div>
+                    <div class="prayer-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Livre</span>
+                    </div>
+                </div>
+
+                <div class="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>ATENÇÃO</strong> Quando decidido entrar em um propósito com Deus, devemos estar dispostos
+                        a cumpri-lo, por isso só entre tendo certeza que irá concluir.</p>
+                </div>
+
+                <div class="scripture">
+                    <h3><strong>Eclesiastes 5:4-5</strong></h3>
+                    <p><strong>[4]</strong> Quando você fizer um voto a Deus, cumpra‑o sem demora, pois os tolos
+                        desagradam a Deus; cumpra o seu voto.</p>
+                    <p><strong>[5]</strong> É melhor não fazer voto do que fazer e não cumprir.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
