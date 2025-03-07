@@ -1,4 +1,4 @@
-C:\Users\lucas\Desktop\instrucoes_rdr
+cd C:\Users\lucas\Desktop\instrucoes_rdr
 
 git init
 git add .
