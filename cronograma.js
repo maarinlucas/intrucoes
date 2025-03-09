@@ -1,5 +1,5 @@
-   // Configuração de eventos por mês
-   const eventData = [
+ // Configuração de eventos por mês
+ const eventData = [
     {
         month: 2, // Março (0-indexed)
         year: 2025,
@@ -10,6 +10,7 @@
         }
     }
 ];
+
 
 // Mês e ano atual para inicialização
 let currentMonth = 2; // Março (0-indexed)
