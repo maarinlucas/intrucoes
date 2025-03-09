@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma Mensal</title>
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+        
+    <link rel="stylesheet" href="style2.css">
+    <link rel="shortcut icon" href="favicon-32x32.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="imageContainer">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="mainNav">
+            <a href="index.html">Jejum</a>
+            <a href="c.html#Devocional">Devocional</a>
+            <a href="c.html#Oração">Oração</a>
+            <a class="atual" href="cronograma.html#Cronograma">Cronograma</a>
+        </nav>
+
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <span class="section-icon">📅</span>
+            <h2 class="section-title">Cronograma Mensal</h2>
+        </div>
+
+        <div class="calendar-header">
+            <div class="month-year" id="month-year-display">Março 2025</div>
+            <div class="nav-buttons">
+                <button class="nav-button" id="prev-month">« Anterior</button>
+                <button class="nav-button" id="next-month">Próximo »</button>
+            </div>
+        </div>
+
+        <!-- Calendário em formato de tabela (desktop) -->
+        <div class="calendar-grid">
+            <table class="calendar" id="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body">
+                    <!-- Será preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Calendário em formato vertical (mobile) -->
+        <div class="calendar-days" id="calendar-days">
+            <!-- Será preenchido via JavaScript -->
+        </div>
+    </div>
+
+    <script src="cronograma.js"></script>
+</body>
+
+</html>

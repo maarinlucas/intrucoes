@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma Mensal</title>
+    <style>
+    
+        :root {
+            --primary-color: #1a67c4;
+            --secondary-color: #e6f0fd;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --header-bg: #1a67c4;
+            --header-text: white;
+            --event-bg: #e6f0fd;
+            --event-border: #99c2f7;
+        }
+
+        :root {
+            --primary-color: #075AAE;
+            --primary-dark: #054A8E;
+            --primary-light: #E6F0FA;
+            --accent-color: #075AAE;
+            --text-primary: #000000;
+            --text-secondary: #505050;
+            --divider-color: #E0E0E0;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --success: #075AAE;
+            --warning: #075AAE;
+            --danger: #054A8E;
+            --info: #075AAE;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--text-primary);
+            color: white;
+            padding: 40px 30px 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 130px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.0rem;
+            margin-bottom: 5px;
+            height: 40px;
+        }
+
+        .imageContainer {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            column-gap: 30px;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        header nav a:hover {
+            color: #ffffffa9;
+        }
+
+        .atual {
+            color: #ffffffa9;
+        }
+
+        /* Hamburger menu styles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .section-header {
+            background-color: var(--secondary-color);
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .month-year {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Estilo para o calendário em formato de tabela (desktop) */
+        .calendar-grid {
+            display: block;
+        }
+
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            background-color: white;
+            border: 1px solid var(--border-color);
+        }
+
+        .calendar th {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .calendar td {
+            border: 1px solid var(--border-color);
+            height: 100px;
+            vertical-align: top;
+            padding: 5px;
+            position: relative;
+        }
+
+        .date-number {
+            text-align: right;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .event {
+            background-color: var(--event-bg);
+            border-left: 3px solid var(--event-border);
+            padding: 3px 6px;
+            margin-bottom: 3px;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+
+        .event-icon {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 4px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .section-icon {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        /* Estilo para o calendário vertical (mobile) */
+        .calendar-days {
+            display: none;
+        }
+
+        .day-row {
+            display: flex;
+            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .day-label {
+            width: 70px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8f8f8;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .day-content {
+            flex: 1;
+            padding: 10px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .day-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        /* Media queries para alternar entre os layouts */
+        @media (max-width: 767px) {
+            .calendar-grid {
+                display: none;
+                /* Esconde o layout de tabela */
+            }
+
+            .calendar-days {
+                display: block;
+                /* Mostra o layout vertical */
+            }
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .nav {
+                gap: 15px;
+            }
+
+            .nav a {
+                font-size: 13px;
+            }
+
+            .month-year {
+                font-size: 20px;
+            }
+
+            .nav-button {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .day-label {
+                width: 60px;
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .day-content {
+                padding: 8px;
+                min-height: 35px;
+            }
+
+            .day-number {
+                width: 22px;
+                height: 22px;
+                font-size: 12px;
+            }
+
+            .event {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="imageContainer">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="mainNav">
+            <a class="atual" href="index.html">Jejum</a>
+            <a href="c.html#Devocional">Devocional</a>
+            <a href="c.html#Oração">Oração</a>
+            <a href="c.html#Cronograma">Cronograma</a>
+        </nav>
+
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <span class="section-icon">📅</span>
+            <h2 class="section-title">Cronograma Mensal</h2>
+        </div>
+
+        <div class="calendar-header">
+            <div class="month-year" id="month-year-display">Março 2025</div>
+            <div class="nav-buttons">
+                <button class="nav-button" id="prev-month">« Anterior</button>
+                <button class="nav-button" id="next-month">Próximo »</button>
+            </div>
+        </div>
+
+        <!-- Calendário em formato de tabela (desktop) -->
+        <div class="calendar-grid">
+            <table class="calendar" id="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body">
+                    <!-- Será preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Calendário em formato vertical (mobile) -->
+        <div class="calendar-days" id="calendar-days">
+            <!-- Será preenchido via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Configuração de eventos por mês
+        const eventData = [
+            {
+                month: 2, // Março (0-indexed)
+                year: 2025,
+                events: {
+                    5: [{ title: "Jejum: 8 horas", type: "jejum" }],
+                    12: [{ title: "Devocional Especial", type: "devocional" }],
+                    18: [{ title: "Reunião de Oração", type: "oracao" }]
+                }
+            }
+        ];
+
+        // Mês e ano atual para inicialização
+        let currentMonth = 2; // Março (0-indexed)
+        let currentYear = 2025;
+
+        // Nome dos meses
+        const monthNames = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        // Nome dos dias da semana
+        const weekDays = [
+            "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"
+        ];
+
+        // Inicializar o calendário
+        document.addEventListener('DOMContentLoaded', function () {
+            generateGridCalendar(currentMonth, currentYear);
+            generateVerticalCalendar(currentMonth, currentYear);
+            updateMonthYearDisplay();
+
+            // Event listeners para navegação
+            document.getElementById('prev-month').addEventListener('click', function () {
+                navigateMonth(-1);
+            });
+
+            document.getElementById('next-month').addEventListener('click', function () {
+                navigateMonth(1);
+            });
+
+            // Verificar o tamanho da tela para mostrar o layout apropriado
+            checkScreenSize();
+            window.addEventListener('resize', checkScreenSize);
+        });
+
+        function checkScreenSize() {
+            const isMobile = window.innerWidth <= 767;
+            document.querySelector('.calendar-grid').style.display = isMobile ? 'none' : 'block';
+            document.querySelector('.calendar-days').style.display = isMobile ? 'block' : 'none';
+        }
+
+        function navigateMonth(direction) {
+            currentMonth += direction;
+
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+
+            generateGridCalendar(currentMonth, currentYear);
+            generateVerticalCalendar(currentMonth, currentYear);
+            updateMonthYearDisplay();
+        }
+
+        function updateMonthYearDisplay() {
+            document.getElementById('month-year-display').textContent =
+                `${monthNames[currentMonth]} ${currentYear}`;
+        }
+
+        // Função para gerar o calendário em formato de tabela (desktop)
+        function generateGridCalendar(month, year) {
+            const calendarBody = document.getElementById('calendar-body');
+            calendarBody.innerHTML = '';
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            let startingDay = firstDay.getDay(); // 0 = Domingo, 1 = Segunda, ...
+
+            let date = 1;
+
+            // Criar todas as linhas necessárias para este mês
+            for (let i = 0; i < 6; i++) {
+                // Criar uma nova linha se necessário
+                if (date <= daysInMonth) {
+                    const row = document.createElement('tr');
+
+                    // Criar células para cada dia da semana
+                    for (let j = 0; j < 7; j++) {
+                        const cell = document.createElement('td');
+
+                        if (i === 0 && j < startingDay) {
+                            // Dias do mês anterior
+                            cell.innerHTML = '';
+                        } else if (date > daysInMonth) {
+                            // Dias do próximo mês
+                            cell.innerHTML = '';
+                        } else {
+                            // Dias do mês atual
+                            const dateDiv = document.createElement('div');
+                            dateDiv.className = 'date-number';
+                            dateDiv.textContent = date;
+                            cell.appendChild(dateDiv);
+
+                            // Adicionar eventos para este dia, se existirem
+                            const events = getEventsForDate(date, month, year);
+                            if (events && events.length > 0) {
+                                events.forEach(event => {
+                                    const eventDiv = document.createElement('div');
+                                    eventDiv.className = 'event';
+                                    eventDiv.textContent = event.title;
+                                    cell.appendChild(eventDiv);
+                                });
+                            }
+
+                            date++;
+                        }
+
+                        row.appendChild(cell);
+                    }
+
+                    calendarBody.appendChild(row);
+                }
+            }
+        }
+
+        // Função para gerar o calendário em formato vertical (mobile)
+        function generateVerticalCalendar(month, year) {
+            const calendarDays = document.getElementById('calendar-days');
+            calendarDays.innerHTML = '';
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+
+            // Criar linhas para cada dia do mês
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const dayOfWeek = date.getDay(); // 0 = Domingo, 1 = Segunda, ...
+
+                // Criar a linha do dia
+                const dayRow = document.createElement('div');
+                dayRow.className = 'day-row';
+
+                // Criar o rótulo do dia
+                const dayLabel = document.createElement('div');
+                dayLabel.className = 'day-label';
+                dayLabel.innerHTML = `${weekDays[dayOfWeek]}<span class="day-number">${day}</span>`;
+                dayRow.appendChild(dayLabel);
+
+                // Criar o conteúdo do dia
+                const dayContent = document.createElement('div');
+                dayContent.className = 'day-content';
+
+                // Adicionar eventos para este dia, se existirem
+                const events = getEventsForDate(day, month, year);
+                if (events && events.length > 0) {
+                    events.forEach(event => {
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = 'event';
+                        eventDiv.textContent = event.title;
+                        dayContent.appendChild(eventDiv);
+                    });
+                }
+
+                dayRow.appendChild(dayContent);
+                calendarDays.appendChild(dayRow);
+            }
+        }
+
+        function getEventsForDate(day, month, year) {
+            // Encontrar eventos para o mês/ano específico
+            const monthData = eventData.find(data => data.month === month && data.year === year);
+
+            if (monthData && monthData.events && monthData.events[day]) {
+                return monthData.events[day];
+            }
+
+            return null;
+        }
+    </script>
+</body>
+
+</html>

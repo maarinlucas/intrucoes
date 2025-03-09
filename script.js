@@ -1,9 +1,9 @@
 // Configurações de datas (variáveis para fácil alteração)
-const dataInicio = "13/01";
-const dataIntermediaria = "14/01";
-const dataFim = "15/01";
-const diaSemanaInicio = "segunda";
-const diaSemanFim = "quarta";
+const dataInicio = "14/03";
+const dataIntermediaria = "15/03";
+const dataFim = "16/03";
+const diaSemanaInicio = "sexta";
+const diaSemanFim = "domingo";
 
 // Configurações de horas (variáveis para fácil alteração)
 const horasJovens1 = "6 a 7";

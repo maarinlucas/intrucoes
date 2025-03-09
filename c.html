@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página em Construção</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #075AAE;
+            --primary-dark: #054A8E;
+            --primary-light: #E6F0FA;
+            --accent-color: #075AAE;
+            --text-primary: #000000;
+            --text-secondary: #505050;
+            --divider-color: #E0E0E0;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --success: #075AAE;
+            --warning: #075AAE;
+            --danger: #054A8E;
+            --info: #075AAE;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-light);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .construction-icon {
+            font-size: 50px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #FFFFFF;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="construction-icon">🚧</div>
+        <h1>Estamos Trabalhando!</h1>
+        <p>Esta página está em construção. Voltaremos em breve com novidades.</p>
+        <button class="back-button" onclick="history.back()">Voltar</button>
+    </div>
+</body>
+</html>

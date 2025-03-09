@@ -36,11 +36,7 @@ h4 {
     color: var(--primary-dark);
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+
 
 /* Header */
 .header {
@@ -131,6 +127,12 @@ header nav a:hover {
 
 .overlay.active {
     display: block;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 /* Cards */
