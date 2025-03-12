@@ -373,7 +373,7 @@ header nav a:hover:not(.atual) {
     }
 
     .imageContainer {
-        width: 80px;
+        width: 180px;
         height: 80px;
     }
 }
