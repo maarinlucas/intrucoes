@@ -60,7 +60,7 @@ h4 {
 }
 
 .imageContainer {
-    width: 100px;
+    width: 200px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -82,11 +82,11 @@ header nav a {
     color: #ffffff;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
 }
 
-header nav a:hover {
-    color: #ffffffa9;
+header nav a:hover:not(.atual) {
+    color: var(--primary-color);
 }
 
 .atual {
