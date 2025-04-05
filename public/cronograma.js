@@ -8,12 +8,40 @@
             15: [{ title: "Jejum 2° dia", type: "jejum" }],
             16: [{ title: "Jejum ultimo dia", type: "jejum" }]
         }
+    },
+    {
+        month: 3, // Março (0-indexed)
+        year: 2025,
+        events: {
+            7: [{ title: "Oração Primeiro dia", type: "oracao" }],
+            8: [{ title: "Oração 2° dia", type: "oracao" }],
+            9: [{ title: "Oração 3° dia", type: "oracao" }],
+            10: [{ title: "Oração 4° dia", type: "oracao" }],
+            11: [{ title: "Oração 5° dia", type: "oracao" }],
+            12: [{ title: "Oração 6° dia", type: "oracao" }],
+            13: [{ title: "Oração 7° dia", type: "oracao" }],
+            14: [{ title: "Oração 8° dia", type: "oracao" }],
+            15: [{ title: "Oração 9° dia", type: "oracao" }],
+            16: [{ title: "Oração 10° dia", type: "oracao" }],
+            17: [{ title: "Oração 11° dia", type: "oracao" }],
+            18: [{ title: "Oração 12° dia", type: "oracao" }],
+            19: [{ title: "Oração 13° dia", type: "oracao" }],
+            20: [{ title: "Oração 14° dia", type: "oracao" }],
+            21: [{ title: "Oração 15° dia", type: "oracao" }],
+            22: [{ title: "Oração 16° dia", type: "oracao" }],
+            23: [{ title: "Oração 17° dia", type: "oracao" }],
+            24: [{ title: "Oração 18° dia", type: "oracao" }],
+            25: [{ title: "Oração 19° dia", type: "oracao" }],
+            26: [{ title: "Oração 20° dia", type: "oracao" }],
+            27: [{ title: "Oração 21° dia", type: "oracao" }],
+            28: [{ title: "Oração Último dia", type: "oracao" }]
+        }
     }
 ];
 
 
 // Mês e ano atual para inicialização
-let currentMonth = 2; // Março (0-indexed)
+let currentMonth = 3; // Março (0-indexed)
 let currentYear = 2025;
 
 // Nome dos meses
