@@ -36,9 +36,26 @@
             27: [{ title: "Oração 21° dia", type: "oracao" }],
             28: [{ title: "Oração Último dia", type: "oracao" }]
         }
-    }
+    },
+  {
+        month: 5, // Março (0-indexed)
+        year: 2025,
+        events: {
+            10: [{ title: "Jejum 1° dia", type: "jejum" }],
+            11: [{ title: "Jejum 2° dia", type: "jejum" }],
+            12: [{ title: "Jejum ultimo dia", type: "jejum" }]
+        }
+    },
+  {
+        month: 5, // Março (0-indexed)
+        year: 2025,
+        events: {
+            26: [{ title: "Jejum 1° dia", type: "jejum" }],
+            27: [{ title: "Jejum 2° dia", type: "jejum" }],
+            28: [{ title: "Jejum ultimo dia", type: "jejum" }]
+        }
+    },
 ];
-
 
 // Mês e ano atual para inicialização
 let currentMonth = 3; // Março (0-indexed)
